@@ -9,6 +9,8 @@
 
 namespace m00nk\dynmodels;
 
+use m00nk\dynmodels\models\DynModel;
+use yii\base\DynamicModel;
 use \yii\base\Object;
 use \Yii;
 
@@ -87,8 +89,14 @@ class DynModels extends Object
 	}
 
 
-	public function test()
+	/**
+	 * Возвращает модель, принадлежащую модулю $module
+	 * @param $moduleId
+	 * @param bool $scheme
+	 * @return DynamicModel|null
+	 */
+	public function createModel($moduleId, $scheme = false)
 	{
-		return 1;
+		return DynModel::getInstance($this, $moduleId, $scheme);
 	}
 }
